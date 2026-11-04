@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV · Chakib Selhi, étudiant en génie logiciel</title>
+<meta name="description" content="CV de Chakib Selhi, étudiant en génie logiciel à l'UQAM, à la recherche d'un stage en cybersécurité, analyse, développement ou TI.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/simple.css">
+</head>
+<body>
+<nav class="topbar" aria-label="Navigation">
+  <a href="index.html">← Retour à ChakibOS</a>
+  <button type="button" class="print" id="print">Imprimer / PDF</button>
+</nav>
+<main id="cv" class="paper cv"></main>
+<noscript><p class="paper">Ce CV s'affiche avec JavaScript. Écrivez-moi : chakibselhi@gmail.com</p></noscript>
+<script src="js/data.js"></script>
+<script src="js/cv.js"></script>
+<script>
+  document.getElementById("cv").innerHTML = window.renderCV(window.PORTFOLIO, { detail: true });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+/* Version simple du CV : lisible, imprimable, sans bureau. */
+:root {
+  --ink: #111111;
+  --muted: #4A4A4A;
+  --face: #EFEBE2;
+  --font-pixel: "Silkscreen", ui-monospace, Menlo, monospace;
+  --font-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--face); color: var(--ink); font: 14px/1.6 var(--font-mono); }
+a { color: var(--ink); }
+.topbar {
+  max-width: 820px; margin: 0 auto; padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.print {
+  font: inherit; cursor: pointer; padding: 8px 14px; min-height: 40px;
+  background: var(--ink); color: var(--face); border: 2px solid var(--ink);
+}
+.paper { max-width: 820px; margin: 0 auto 40px; padding: 40px 48px; background: #FFFFFF; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+
+.cv__head { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 16px; }
+.cv__name { margin: 0; font: 700 32px/1.1 var(--font-pixel); }
+.cv__title { margin: 6px 0 4px; font-weight: 700; }
+.cv__contact { margin: 0; color: var(--muted); }
+.cv__sec { margin-bottom: 18px; }
+.cv__sec h2 { margin: 0 0 8px; font: 700 15px var(--font-pixel); letter-spacing: .04em; }
+.cv__sec p { margin: 0 0 8px; }
+.cv__sec ul { margin: 0 0 6px; padding-left: 20px; }
+.cv__proj { margin-bottom: 14px; }
+.cv__proj h3 { margin: 0 0 2px; font-size: 15px; }
+.cv__meta { color: var(--muted); font-weight: 400; font-size: 13px; }
+.cv__skills { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 4px 14px; margin: 0; }
+.cv__skills dt { font-weight: 700; }
+.cv__skills dd { margin: 0; }
+
+@media (max-width: 640px) {
+  .paper { padding: 24px 18px; box-shadow: none; border-width: 0; }
+  .cv__skills { grid-template-columns: minmax(0, 1fr); }
+  .cv__skills dd { margin-bottom: 8px; }
+}
+
+@media print {
+  body { background: #FFFFFF; font-size: 11pt; }
+  .topbar { display: none; }
+  .paper { border: 0; box-shadow: none; padding: 0; max-width: none; margin: 0; }
+  a { text-decoration: none; }
+}
