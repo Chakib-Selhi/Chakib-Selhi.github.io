@@ -374,16 +374,14 @@
 
   var aide = {
     title: function () { return t("aide.title"); },
-    size: [520, 500],
+    size: [520, 380],
     render: function () {
       return (
         '<div class="doc"><ul class="doc__list">' +
         ["aide.i1", "aide.i2", "aide.i3", "aide.i4", "aide.i5", "aide.i6"].map(function (k) { return "<li>" + esc(t(k)) + "</li>"; }).join("") +
         "</ul>" +
         "<p>" + esc(t("aide.simpleBefore")) + '<a href="simple.html">' + esc(t("aide.simpleLink")) + "</a>" + esc(t("aide.simpleAfter")) + "</p>" +
-        '<h4 class="doc__h">' + esc(t("aide.lang")) + "</h4>" +
-        '<div class="btn-row"><button type="button" class="btn btn--primary" data-cmd="lang">' + esc(t("aide.langBtn")) + "</button>" +
-        '<button type="button" class="btn" data-open="terminal">' + esc(t("aide.terminalBtn")) + "</button></div></div>"
+        "</div>"
       );
     }
   };
