@@ -51,17 +51,6 @@ Ces maquettes montrent l'état des idées au départ : certaines informations on
 | [F · Capture the Flag](docs/concepts/F-capture-the-flag.png) | Chaque section est un défi à résoudre |
 
 
-## Modifier le contenu
-
-Tout le texte vient de **`js/data.js`** : profil, coordonnées, projets, compétences et emplacements « à venir ».
-Le bureau, le terminal, la fenêtre CV.pdf et la version simple se mettent à jour automatiquement.
-
-- **Ajouter un projet** : copie un bloc dans `projets` (id, nom, fichier, icône, statut, résumé, points forts, pile, liens).
-- **Icônes disponibles** : `folder`, `folderWip`, `watch`, `server`, `doc`, `terminal`, `calendar`, `mail`, `user`, `gear`.
-- **Statuts des projets** : `publie`, `en-cours`, `conception`.
-- **Compétences** : chaque catégorie peut pointer vers les projets qui la prouvent (`preuves`).
-- **À compléter** : `linkedin` et `cvPdf` (dépose le PDF dans `assets/`).
-
 ## Structure
 
 ```
