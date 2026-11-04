@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+Icon?
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Éditeurs et IDE (IntelliJ, WebStorm, VS Code, Vim)
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# Dépendances et journaux
+node_modules/
+npm-debug.log*
+*.log
+
+# Secrets et fichiers locaux
+.env
+.env.*
+*.local
