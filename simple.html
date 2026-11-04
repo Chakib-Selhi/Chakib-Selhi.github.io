@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/simple.css">
+<link rel="stylesheet" href="css/simple.css?v=20261104051439">
 </head>
 <body>
 <nav class="topbar" aria-label="Navigation">
@@ -21,10 +21,10 @@
 </nav>
 <main id="cv" class="paper cv"></main>
 <noscript><p class="paper">Ce CV s'affiche avec JavaScript. / This résumé needs JavaScript. chakibselhi@gmail.com</p></noscript>
-<script src="js/data.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/github.js"></script>
-<script src="js/cv.js"></script>
+<script src="js/data.js?v=20261104051439"></script>
+<script src="js/i18n.js?v=20261104051439"></script>
+<script src="js/github.js?v=20261104051439"></script>
+<script src="js/cv.js?v=20261104051439"></script>
 <script>
   (function () {
     var cv = document.getElementById("cv");
@@ -32,10 +32,11 @@
       window.I18N.apply(document, "meta.titleSimple");
       cv.innerHTML = window.renderCV(window.PORTFOLIO, { detail: true });
     }
-    render();
-    // Les dépôts GitHub publics complètent le CV dès qu'ils sont chargés.
-    window.GITHUB.sync().then(render);
+    // Les dépôts GitHub publics complètent le CV dès qu'ils sont chargés (et à chaque mise à jour).
+    document.addEventListener("githubsync", render);
     document.addEventListener("langchange", render);
+    render();
+    window.GITHUB.sync();
     document.getElementById("lang").addEventListener("click", function () { window.I18N.toggle(); });
     document.getElementById("print").addEventListener("click", function () { window.print(); });
   })();

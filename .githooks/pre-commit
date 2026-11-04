@@ -1,0 +1,13 @@
+#!/bin/sh
+# Met à jour le numéro de version des fichiers CSS et JS (?v=...) dans les pages HTML
+# quand un commit modifie css/ ou js/. Les visiteurs reçoivent ainsi toujours des fichiers
+# cohérents entre eux, même si leur navigateur garde l'ancienne version en cache.
+# Activation (une fois par clone) : git config core.hooksPath .githooks
+if git diff --cached --name-only | grep -qE '^(css|js)/'; then
+  version=$(date -u +%Y%m%d%H%M%S)
+  for page in index.html simple.html; do
+    [ -f "$page" ] || continue
+    sed -i.bak -E "s/\?v=[0-9]+/?v=$version/g" "$page" && rm -f "$page.bak"
+    git add "$page"
+  done
+fi
