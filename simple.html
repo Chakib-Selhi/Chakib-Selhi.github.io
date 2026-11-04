@@ -13,16 +13,32 @@
 </head>
 <body>
 <nav class="topbar" aria-label="Navigation">
-  <a href="index.html">← Retour à ChakibOS</a>
-  <button type="button" class="print" id="print">Imprimer / PDF</button>
+  <a href="index.html" data-i18n="simple.back">← Retour à ChakibOS</a>
+  <span class="topbar__actions">
+    <button type="button" class="ghost" id="lang" data-i18n="simple.lang">English</button>
+    <button type="button" class="print" id="print" data-i18n="simple.print">Imprimer / PDF</button>
+  </span>
 </nav>
 <main id="cv" class="paper cv"></main>
-<noscript><p class="paper">Ce CV s'affiche avec JavaScript. Écrivez-moi : chakibselhi@gmail.com</p></noscript>
+<noscript><p class="paper">Ce CV s'affiche avec JavaScript. / This résumé needs JavaScript. chakibselhi@gmail.com</p></noscript>
 <script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/github.js"></script>
 <script src="js/cv.js"></script>
 <script>
-  document.getElementById("cv").innerHTML = window.renderCV(window.PORTFOLIO, { detail: true });
-  document.getElementById("print").addEventListener("click", function () { window.print(); });
+  (function () {
+    var cv = document.getElementById("cv");
+    function render() {
+      window.I18N.apply(document, "meta.titleSimple");
+      cv.innerHTML = window.renderCV(window.PORTFOLIO, { detail: true });
+    }
+    render();
+    // Les dépôts GitHub publics complètent le CV dès qu'ils sont chargés.
+    window.GITHUB.sync().then(render);
+    document.addEventListener("langchange", render);
+    document.getElementById("lang").addEventListener("click", function () { window.I18N.toggle(); });
+    document.getElementById("print").addEventListener("click", function () { window.print(); });
+  })();
 </script>
 </body>
 </html>

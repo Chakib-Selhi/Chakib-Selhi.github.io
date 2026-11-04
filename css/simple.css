@@ -16,6 +16,8 @@ a { color: var(--ink); }
   font: inherit; cursor: pointer; padding: 8px 14px; min-height: 40px;
   background: var(--ink); color: var(--face); border: 2px solid var(--ink);
 }
+.topbar__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.ghost { font: inherit; cursor: pointer; padding: 8px 14px; min-height: 40px; background: transparent; color: var(--ink); border: 2px solid var(--ink); }
 .paper { max-width: 820px; margin: 0 auto 40px; padding: 40px 48px; background: #FFFFFF; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
 
 .cv__head { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 16px; }
