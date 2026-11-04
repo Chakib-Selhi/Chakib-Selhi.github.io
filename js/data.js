@@ -52,6 +52,8 @@ window.PORTFOLIO = {
     utilisateur: "Chakib-Selhi",
     exclure: [], // Noms de dépôts publics à ne pas afficher, ex. ["test-repo"]
     inclureForks: false,
+    // Icône des dépôts ajoutés automatiquement : nom du dépôt → icône de js/icons.js.
+    icones: { "HoraireSync": "calendar" },
     // Sujets (topics) GitHub reconnus comme compétences : sujet → [catégorie, compétence].
     // Une compétence null ajoute seulement le projet comme preuve de la catégorie.
     sujets: {

@@ -185,9 +185,14 @@
     });
   }
 
+  // Icône d'un dépôt ajouté automatiquement : choix forcé dans data.js (github.icones), sinon déduite.
   function guessIcon(r, main) {
+    var forced = (cfg.icones || {})[r.name];
+    if (forced) return forced;
     var t = r.topics || [];
     var has = function (x) { return t.indexOf(x) !== -1; };
+    var text = (r.name + " " + r.description).toLowerCase();
+    if (has("calendar") || has("ics") || has("schedule") || /calendrier|calendar|horaire|schedule|agenda|\.ics\b/.test(text)) return "calendar";
     if (has("ios") || has("watchos") || has("android") || has("swiftui") || main === "Swift" || main === "Kotlin") return "watch";
     if (has("docker") || has("homelab") || has("self-hosted") || has("server") || has("networking") || main === "Shell" || main === "Dockerfile") return "server";
     return "code";
