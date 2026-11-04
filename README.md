@@ -89,12 +89,6 @@ assets/         Favicon et captures d'écran des projets
 docs/           Captures d'écran du site et maquettes préliminaires
 ```
 
-## Publier avec GitHub Pages
-
-1. Pousse ce dépôt sur GitHub sous le nom `Chakib-Selhi.github.io`.
-2. Dans **Settings › Pages**, choisis la source **Deploy from a branch**, la branche `main` et le dossier `/ (root)`.
-3. Le site est en ligne quelques minutes plus tard à l'adresse `https://chakib-selhi.github.io`.
-
 ## Mes autres projets
 
 - [WatchDocs](https://github.com/Chakib-Selhi/WatchDocs) : documents de l'iPhone vers l'Apple Watch, lecture hors ligne (Swift, SwiftUI, watchOS).
