@@ -13,7 +13,7 @@ en cybersécurité, analyse, développement ou TI.
 - **Gestionnaire de fenêtres** écrit à la main : déplacement, redimensionnement, réduction, plein écran, pile de fenêtres et barre des tâches.
 - **Applications** : À propos, Projets (explorateur de fichiers + fiche de chaque projet), Compétences, CV.pdf, Contact.
 - **Terminal** avec ses commandes (`help`, `whoami`, `neofetch`, `ls`, `cat`, `open`, `skills`, `github`, `stage`, `contact`, `lang`), complétion par Tab et historique.
-- **Projets synchronisés avec GitHub** : chaque dépôt public apparaît automatiquement dans Projets, avec sa description, ses langages, ses sujets, ses statistiques et son README affiché dans le site. Les compétences et la pile technique se mettent à jour en même temps (API GitHub, cache local, mode hors ligne).
+- **Projets synchronisés avec GitHub** : chaque dépôt public apparaît automatiquement dans Projets, avec sa description, ses langages, ses sujets, ses statistiques et son README affiché dans le site. Un dépôt supprimé ou passé en privé disparaît du site. Les compétences et la pile technique se mettent à jour en même temps (API GitHub, requêtes conditionnelles, mode hors ligne).
 - **Bilingue français / anglais** : bouton dans le menu Aide, changement de langue sans recharger la page. La langue du navigateur est détectée à la première visite.
 - **Version simple** (`simple.html`) : tout le CV sur une seule page, lisible et imprimable, pour les recruteurs pressés.
 - **Mobile** : chaque fenêtre devient une application plein écran.
@@ -71,6 +71,7 @@ js/apps.js      Applications : À propos, Projets, Compétences, Contact, CV, et
 js/terminal.js  Terminal et ses commandes
 js/os.js        Gestionnaire de fenêtres, menus, barre des tâches, démarrage
 assets/         Favicon et captures d'écran des projets
+.githooks/      Hook git : met à jour la version des fichiers CSS et JS à chaque commit
 docs/           Captures d'écran du site et maquettes préliminaires
 ```
 
