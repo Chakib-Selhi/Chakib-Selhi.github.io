@@ -350,6 +350,35 @@ code, kbd { font-family: var(--font-mono); }
 .boot__hint { margin: 0; color: #8C8C8C; font-size: 12px; }
 .noscript { position: fixed; inset: auto 16px 60px 16px; z-index: 9999; padding: 14px; background: var(--face); border: 2px solid var(--ink); }
 
+/* ===== Projets GitHub : statistiques, langages, README ===== */
+.ghstats { margin: -6px 0 12px; font-size: 12px; color: var(--muted); }
+.doc__auto { font-style: italic; }
+.langbar { display: flex; height: 12px; border: 2px solid var(--ink); background: var(--face); overflow: hidden; }
+.langbar span { display: block; height: 100%; min-width: 2px; }
+.langlegend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 6px 0 0; padding: 0; font-size: 12px; }
+.langlegend li { display: flex; align-items: center; gap: 6px; }
+.langdot { width: 10px; height: 10px; border: 1px solid var(--ink); display: inline-block; }
+.chips--topics li { background: #E3ECFA; border-color: #2457D6; color: #163A8A; }
+.readme { margin-top: 20px; border: 2px solid var(--ink); background: var(--paper); }
+.readme summary { cursor: pointer; padding: 8px 12px; background: var(--face); font: 700 13px var(--font-pixel); border-bottom: 2px solid transparent; }
+.readme[open] summary { border-bottom-color: var(--ink); }
+.md { padding: 14px 18px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+.md h1, .md h2, .md h3, .md h4 { font-family: var(--font-mono); margin: 18px 0 8px; line-height: 1.3; }
+.md h1 { font-size: 20px; } .md h2 { font-size: 17px; border-bottom: 1px solid #CCCCCC; padding-bottom: 4px; } .md h3 { font-size: 15px; } .md h4 { font-size: 14px; }
+.md p, .md ul, .md ol, .md table, .md pre, .md blockquote { margin: 0 0 12px; }
+.md ul, .md ol { padding-left: 22px; }
+.md img { max-width: 100%; height: auto; vertical-align: middle; }
+.md code { font-family: var(--font-mono); font-size: 12.5px; background: #F1EEE6; padding: 1px 4px; }
+.md pre { background: #151515; color: #E8E8E8; padding: 12px 14px; overflow-x: auto; }
+.md pre code { background: none; padding: 0; color: inherit; }
+.md table { border-collapse: collapse; display: block; overflow-x: auto; }
+.md th, .md td { border: 1px solid #BBBBBB; padding: 5px 9px; vertical-align: top; }
+.md th { background: var(--face); }
+.md blockquote { border-left: 3px solid #BBBBBB; padding-left: 12px; color: var(--muted); }
+.md hr { border: 0; border-top: 1px solid #CCCCCC; margin: 16px 0; }
+.md a { color: #1E46B4; }
+.menu .menu__lang { font-weight: 700; }
+
 /* ===== Mobile : les fenêtres deviennent des applications plein écran ===== */
 @media (max-width: 760px) {
   .menubar { font-size: 12px; }

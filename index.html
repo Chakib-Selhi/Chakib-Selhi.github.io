@@ -7,47 +7,50 @@
 <meta name="description" content="Portfolio de Chakib Selhi, étudiant en génie logiciel à l'UQAM, à la recherche d'un stage en cybersécurité, analyse, développement ou TI.">
 <meta name="theme-color" content="#2F6F73">
 <meta property="og:title" content="ChakibOS · Portfolio de Chakib Selhi">
-<meta property="og:description" content="Étudiant en génie logiciel à l'UQAM, à la recherche d'un stage en cybersécurité, analyse, développement ou TI.">
+<meta property="og:description" content="Étudiant en génie logiciel à l'UQAM, à la recherche d'un stage en cybersécurité, analyse, développement ou TI. / Software engineering student at UQAM, looking for an internship.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.github.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="css/os.css">
 </head>
 <body>
-<a class="skip" href="simple.html">Aller à la version simple du CV</a>
+<a class="skip" href="simple.html" data-i18n="skip">Aller à la version simple du CV</a>
 
 <header class="menubar">
-  <nav class="menubar__menus" aria-label="Menu principal">
+  <nav class="menubar__menus" aria-label="Menu">
     <div class="mb">
-      <button type="button" class="mb__btn mb__btn--logo" data-menu="systeme" aria-haspopup="true" aria-expanded="false" aria-label="Menu ChakibOS">◆<span class="mb__brand"> ChakibOS</span></button>
+      <button type="button" class="mb__btn mb__btn--logo" data-menu="systeme" aria-haspopup="true" aria-expanded="false" data-i18n-aria="menu.system">◆<span class="mb__brand"> ChakibOS</span></button>
       <div class="menu" role="menu" data-menu-panel="systeme" hidden>
-        <button type="button" role="menuitem" data-cmd="open:apropos-os">À propos de ChakibOS</button>
-        <button type="button" role="menuitem" data-cmd="wallpaper">Changer le fond d'écran</button>
-        <button type="button" role="menuitem" data-cmd="simple">Version simple (CV)</button>
+        <button type="button" role="menuitem" data-cmd="open:apropos-os" data-i18n="menu.aboutOs">À propos de ChakibOS</button>
+        <button type="button" role="menuitem" data-cmd="wallpaper" data-i18n="menu.wallpaper">Changer le fond d'écran</button>
+        <button type="button" role="menuitem" data-cmd="simple" data-i18n="menu.simple">Version simple (CV)</button>
         <hr>
-        <button type="button" role="menuitem" data-cmd="reboot">Redémarrer</button>
+        <button type="button" role="menuitem" data-cmd="reboot" data-i18n="menu.reboot">Redémarrer</button>
       </div>
     </div>
     <div class="mb">
-      <button type="button" class="mb__btn" data-menu="aide" aria-haspopup="true" aria-expanded="false">Aide</button>
+      <button type="button" class="mb__btn" data-menu="aide" aria-haspopup="true" aria-expanded="false" data-i18n="menu.help">Aide</button>
       <div class="menu" role="menu" data-menu-panel="aide" hidden>
-        <button type="button" role="menuitem" data-cmd="open:aide">Comment naviguer</button>
-        <button type="button" role="menuitem" data-cmd="open:terminal">Ouvrir le Terminal</button>
-        <button type="button" role="menuitem" data-cmd="source">Mes dépôts GitHub</button>
+        <button type="button" role="menuitem" data-cmd="lang" class="menu__lang" data-i18n="menu.lang">English version</button>
+        <hr>
+        <button type="button" role="menuitem" data-cmd="open:aide" data-i18n="menu.howto">Comment naviguer</button>
+        <button type="button" role="menuitem" data-cmd="open:terminal" data-i18n="menu.terminal">Ouvrir le Terminal</button>
+        <button type="button" role="menuitem" data-cmd="source" data-i18n="menu.github">Mes dépôts GitHub</button>
       </div>
     </div>
   </nav>
   <div class="menubar__right">
-    <a class="mb__link" href="simple.html">Version simple</a>
+    <a class="mb__link" href="simple.html" data-i18n="menu.simpleLink">Version simple</a>
     <time id="clock" class="mb__clock"><span class="mb__day"></span> <span class="mb__time"></span></time>
   </div>
 </header>
 
 <main id="desktop" class="desktop">
-  <h1 class="sr-only">Chakib Selhi, étudiant en génie logiciel à l'UQAM : portfolio</h1>
-  <nav id="icons" class="icons" aria-label="Icônes du bureau"></nav>
+  <h1 class="sr-only" data-i18n="h1">Chakib Selhi, étudiant en génie logiciel à l'UQAM : portfolio</h1>
+  <nav id="icons" class="icons" data-i18n-aria="desk.aria" aria-label="Icônes du bureau"></nav>
   <div id="windows" class="windows"></div>
 </main>
 
@@ -57,25 +60,28 @@
     <div class="menu menu--up" role="menu" data-menu-panel="demarrer" hidden>
       <div data-fill="apps"></div>
       <hr>
-      <button type="button" role="menuitem" data-cmd="simple">Version simple (CV)</button>
-      <button type="button" role="menuitem" data-cmd="open:aide">Comment naviguer</button>
+      <button type="button" role="menuitem" data-cmd="simple" data-i18n="menu.simple">Version simple (CV)</button>
+      <button type="button" role="menuitem" data-cmd="open:aide" data-i18n="menu.howto">Comment naviguer</button>
+      <button type="button" role="menuitem" data-cmd="lang" data-i18n="menu.lang">English version</button>
     </div>
   </div>
-  <div id="task-list" class="task-list" aria-label="Fenêtres ouvertes"></div>
+  <div id="task-list" class="task-list" data-i18n-aria="task.aria" aria-label="Fenêtres ouvertes"></div>
   <a class="task-gh" href="https://github.com/Chakib-Selhi" target="_blank" rel="noopener">GitHub</a>
 </footer>
 
 <div id="boot" class="boot" hidden>
   <div class="boot__log" aria-live="polite"></div>
-  <p class="boot__hint">Cliquez ou appuyez sur une touche pour passer</p>
+  <p class="boot__hint" data-i18n="boot.hint">Cliquez ou appuyez sur une touche pour passer</p>
 </div>
 
 <noscript>
-  <div class="noscript">ChakibOS a besoin de JavaScript. <a href="simple.html">Voir la version simple du CV</a>.</div>
+  <div class="noscript">ChakibOS a besoin de JavaScript / ChakibOS needs JavaScript. <a href="simple.html">Version simple</a>.</div>
 </noscript>
 
 <script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/icons.js"></script>
+<script src="js/github.js"></script>
 <script src="js/cv.js"></script>
 <script src="js/apps.js"></script>
 <script src="js/terminal.js"></script>
