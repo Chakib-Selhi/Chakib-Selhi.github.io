@@ -6,6 +6,8 @@
  * Les dépôts GitHub publics de `github.utilisateur` sont ajoutés automatiquement
  * aux projets (voir js/github.js). Un projet décrit ci-dessous avec `depot`
  * garde son texte rédigé à la main et reçoit en plus les infos de GitHub.
+ * Un dépôt supprimé ou passé en privé disparaît du site à la visite suivante.
+ * Le dépôt du site lui-même (Chakib-Selhi.github.io) n'est jamais affiché.
  */
 window.PORTFOLIO = {
   profil: {
@@ -50,7 +52,6 @@ window.PORTFOLIO = {
     utilisateur: "Chakib-Selhi",
     exclure: [], // Noms de dépôts publics à ne pas afficher, ex. ["test-repo"]
     inclureForks: false,
-    cacheMinutes: 60,
     // Sujets (topics) GitHub reconnus comme compétences : sujet → [catégorie, compétence].
     // Une compétence null ajoute seulement le projet comme preuve de la catégorie.
     sujets: {
@@ -198,49 +199,6 @@ window.PORTFOLIO = {
       liens: [
         { label: { fr: "Code source", en: "Source code" }, url: "https://github.com/Chakib-Selhi/homelab" }
       ]
-    },
-    {
-      id: "chakibos",
-      depot: "Chakib-Selhi.github.io",
-      fin: true, // Toujours affiché après les autres projets.
-      nom: "ChakibOS",
-      fichier: "ChakibOS.app",
-      icone: "terminal",
-      statut: "publie",
-      annee: "2026",
-      type: { fr: "Site web (ce portfolio)", en: "Website (this portfolio)" },
-      langage: "JavaScript · HTML · CSS",
-      resume: {
-        fr: "Ce portfolio : un bureau rétro avec gestionnaire de fenêtres, terminal, CV bilingue et projets synchronisés automatiquement avec GitHub.",
-        en: "This portfolio: a retro desktop with a window manager, a terminal, a bilingual résumé and projects synced automatically with GitHub."
-      },
-      pointsForts: {
-        fr: [
-          "Gestionnaire de fenêtres écrit à la main : déplacement, redimensionnement, réduction, plein écran et barre des tâches.",
-          "Terminal avec ses commandes, la complétion par Tab et l'historique.",
-          "Interface bilingue français / anglais, qui change de langue sans recharger la page.",
-          "Projets et compétences mis à jour automatiquement à partir de l'API GitHub, avec cache et mode hors ligne.",
-          "README des dépôts affichés dans le site grâce à un moteur Markdown et un filtre HTML écrits à la main.",
-          "Aucun framework ni étape de compilation : HTML, CSS et JavaScript."
-        ],
-        en: [
-          "Hand-written window manager: dragging, resizing, minimizing, full screen and a taskbar.",
-          "Terminal with its own commands, Tab completion and history.",
-          "Bilingual French / English interface that switches language without reloading the page.",
-          "Projects and skills updated automatically from the GitHub API, with caching and an offline mode.",
-          "Repository READMEs displayed in the site through a hand-written Markdown renderer and HTML sanitizer.",
-          "No framework and no build step: HTML, CSS and JavaScript."
-        ]
-      },
-      appris: [],
-      pile: ["JavaScript", "HTML", "CSS", { fr: "API GitHub", en: "GitHub API" }, "GitHub Pages"],
-      images: [
-        { src: "docs/screenshots/01-bureau.png", alt: { fr: "Bureau de ChakibOS au démarrage", en: "ChakibOS desktop at startup" } },
-        { src: "docs/screenshots/05-terminal.png", alt: { fr: "Terminal avec la commande neofetch", en: "Terminal with the neofetch command" } }
-      ],
-      liens: [
-        { label: { fr: "Code source", en: "Source code" }, url: "https://github.com/Chakib-Selhi/Chakib-Selhi.github.io" }
-      ]
     }
   ],
 
@@ -263,7 +221,7 @@ window.PORTFOLIO = {
       id: "langages",
       cat: { fr: "Langages", en: "Languages" },
       items: ["Java", "C", "C++", "SQL", "JavaScript", "HTML / CSS", "Bash / Shell", "Swift"],
-      preuves: ["watchdocs", "homelab", "chakibos"]
+      preuves: ["watchdocs", "homelab"]
     },
     {
       id: "genie",

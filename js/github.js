@@ -1,14 +1,17 @@
 /*
  * Synchronisation avec GitHub.
  *
- * Au chargement, le site lit les dépôts PUBLICS de PORTFOLIO.github.utilisateur
+ * À chaque visite, le site lit les dépôts PUBLICS de PORTFOLIO.github.utilisateur
  * avec l'API GitHub (aucun jeton, aucun serveur) :
  *   - un dépôt déjà décrit dans data.js (champ `depot`) garde son texte et reçoit les infos GitHub ;
  *   - un nouveau dépôt devient automatiquement un projet (description, langages, sujets, README) ;
  *   - les langages et les sujets (topics) mettent à jour les compétences et le résumé « À propos » ;
- *   - un projet de data.js dont le dépôt n'est plus public est masqué.
- * Les réponses sont gardées en cache (localStorage) pour ménager la limite de l'API (60 requêtes/heure).
- * Si GitHub ne répond pas, le site utilise le dernier cache ou les données de data.js.
+ *   - un dépôt supprimé ou passé en privé disparaît du site (y compris un projet de data.js) ;
+ *   - le dépôt du site lui-même (<utilisateur>.github.io) n'est jamais affiché.
+ * La dernière liste connue est gardée en localStorage : le bureau s'affiche tout de suite avec elle,
+ * puis se met à jour dès que GitHub répond. Les requêtes sont conditionnelles (ETag) et les langages
+ * ne sont relus que pour les dépôts modifiés, pour ménager la limite de l'API (60 requêtes/heure).
+ * Si GitHub ne répond pas, le site utilise la dernière liste connue ou les données de data.js.
  */
 (function () {
   "use strict";
@@ -17,7 +20,18 @@
   var USER = cfg.utilisateur || "";
   var API = "https://api.github.com";
   var RAW = "https://raw.githubusercontent.com";
-  var CACHE_KEY = "chakibos-github-v1";
+  var CACHE_KEY = "chakibos-github-v2";
+  var SITE_REPO = (USER + ".github.io").toLowerCase();
+
+  // Copie d'origine de data.js : chaque synchronisation repart de zéro,
+  // pour qu'un dépôt retiré de GitHub disparaisse aussi du site.
+  var BASE = JSON.stringify({ projets: D.projets, competences: D.competences, specs: D.profil.specs });
+  function reset() {
+    var b = JSON.parse(BASE);
+    D.projets = b.projets;
+    D.competences = b.competences;
+    D.profil.specs = b.specs;
+  }
 
   var state = { source: "none", count: 0, done: false };
   var syncPromise = null;
@@ -60,10 +74,11 @@
   }
 
   /* ---------- API ---------- */
+  // cache "no-cache" : le navigateur revalide sa copie avec l'ETag ; une réponse 304 ne compte pas dans la limite.
   function getJSON(url, ms) {
     var ctrl = window.AbortController ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, ms || 6000);
-    return fetch(url, { headers: { Accept: "application/vnd.github+json" }, signal: ctrl ? ctrl.signal : undefined })
+    return fetch(url, { headers: { Accept: "application/vnd.github+json" }, cache: "no-cache", signal: ctrl ? ctrl.signal : undefined })
       .then(function (r) {
         clearTimeout(timer);
         if (!r.ok) throw new Error("HTTP " + r.status);
@@ -93,20 +108,26 @@
     };
   }
 
-  // Seuls les dépôts publics, sans les forks (option), le dépôt de profil et les exclusions.
+  // Seuls les dépôts publics, sans les forks (option), le dépôt de profil, le dépôt du site et les exclusions.
   function visible(r) {
     if (r.private) return false;
     if (r.fork && !cfg.inclureForks) return false;
-    if (r.name.toLowerCase() === USER.toLowerCase()) return false;
+    var name = r.name.toLowerCase();
+    if (name === USER.toLowerCase() || name === SITE_REPO) return false;
     return !(cfg.exclure || []).some(function (n) { return n.toLowerCase() === r.name.toLowerCase(); });
   }
 
-  function fetchRepos() {
+  // previous : dernière liste connue, pour ne relire les langages que des dépôts modifiés.
+  function fetchRepos(previous) {
+    var prev = {};
+    (previous || []).forEach(function (r) { prev[r.name] = r; });
     var url = API + "/users/" + encodeURIComponent(USER) + "/repos?per_page=100&type=owner&sort=pushed";
     return getJSON(url).then(function (list) {
       if (!Array.isArray(list)) throw new Error("Réponse inattendue");
       var keep = list.filter(function (r) { return visible({ name: r.name, private: r.private, fork: r.fork }); });
       return Promise.all(keep.map(function (r) {
+        var old = prev[r.name];
+        if (old && old.langs && old.pushed === (r.pushed_at || r.updated_at)) return slim(r, old.langs);
         return getJSON(r.languages_url).catch(function () { return null; }).then(function (langs) { return slim(r, langs); });
       }));
     });
@@ -205,6 +226,7 @@
   }
 
   function merge(repos) {
+    reset();
     var list = repos.filter(visible);
     var byName = {};
     list.forEach(function (r) { byName[r.name.toLowerCase()] = r; });
@@ -230,25 +252,34 @@
     return list.length;
   }
 
+  function apply(repos, source) {
+    state.source = source;
+    state.count = merge(repos);
+    state.done = true;
+    document.dispatchEvent(new CustomEvent("githubsync", { detail: state }));
+  }
+
+  /*
+   * 1. S'il existe une liste connue, le site l'affiche tout de suite (la promesse est résolue).
+   * 2. Dans tous les cas, GitHub est relu : la liste à jour remplace l'ancienne et l'événement
+   *    « githubsync » redessine les fenêtres (un dépôt devenu privé disparaît).
+   */
   function sync() {
     if (syncPromise) return syncPromise;
     if (!USER || !window.fetch) { state.done = true; syncPromise = Promise.resolve(state); return syncPromise; }
     var cached = readJSON("localStorage", CACHE_KEY);
-    var fresh = cached && cached.user === USER && Date.now() - cached.at < (cfg.cacheMinutes || 60) * 60000;
-    var source = fresh ? Promise.resolve({ repos: cached.repos, source: "cache" })
-      : fetchRepos().then(function (repos) {
-        writeJSON("localStorage", CACHE_KEY, { user: USER, at: Date.now(), repos: repos });
-        return { repos: repos, source: "api" };
-      }).catch(function () {
-        return cached && cached.user === USER ? { repos: cached.repos, source: "cache" } : { repos: null, source: "none" };
-      });
-    syncPromise = source.then(function (res) {
-      state.source = res.source;
-      state.count = res.repos ? merge(res.repos) : 0;
-      state.done = true;
-      document.dispatchEvent(new CustomEvent("githubsync", { detail: state }));
+    if (cached && (cached.user !== USER || !Array.isArray(cached.repos))) cached = null;
+    if (cached) apply(cached.repos, "cache");
+    var refresh = fetchRepos(cached && cached.repos).then(function (repos) {
+      writeJSON("localStorage", CACHE_KEY, { user: USER, at: Date.now(), repos: repos });
+      apply(repos, "api");
+      return state;
+    }).catch(function () {
+      if (!cached) { state.source = "none"; state.done = true; }
       return state;
     });
+    syncPromise = cached ? Promise.resolve(state) : refresh;
+    state.refresh = refresh;
     return syncPromise;
   }
 

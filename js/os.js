@@ -398,8 +398,14 @@
   function withTimeout(p, ms) {
     return Promise.race([p, new Promise(function (res) { setTimeout(function () { res(null); }, ms); })]);
   }
-  // Si GitHub répond après l'ouverture du bureau, les fenêtres se mettent à jour.
-  document.addEventListener("githubsync", function () { if (started) refreshAll(); });
+  // Quand GitHub répond, les fenêtres se mettent à jour ; la fiche d'un dépôt retiré se ferme.
+  document.addEventListener("githubsync", function () {
+    if (!started) return;
+    wins.forEach(function (w) {
+      if (w.appId === "projet" && !D().projets.some(function (p) { return p.id === w.arg; })) close(w);
+    });
+    refreshAll();
+  });
 
   /* ================= Démarrage ================= */
   var started = false;
