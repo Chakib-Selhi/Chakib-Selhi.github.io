@@ -50,16 +50,6 @@ Ces maquettes montrent l'état des idées au départ : certaines informations on
 | [E · ChakibOS](docs/concepts/E-chakibos.png) | Un faux système d'exploitation rétro (retenu) |
 | [F · Capture the Flag](docs/concepts/F-capture-the-flag.png) | Chaque section est un défi à résoudre |
 
-## Lancer le site en local
-
-Double-clique sur `index.html` : aucun serveur n'est requis.
-
-Pour tester comme en production :
-
-```sh
-python3 -m http.server 8000
-# puis ouvre http://localhost:8000
-```
 
 ## Modifier le contenu
 
