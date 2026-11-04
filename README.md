@@ -12,7 +12,9 @@ en cybersécurité, analyse, développement ou TI.
 
 - **Gestionnaire de fenêtres** écrit à la main : déplacement, redimensionnement, réduction, plein écran, pile de fenêtres et barre des tâches.
 - **Applications** : À propos, Projets (explorateur de fichiers + fiche de chaque projet), Compétences, CV.pdf, Contact.
-- **Terminal** avec ses commandes (`help`, `whoami`, `neofetch`, `ls`, `cat`, `open`, `stage`, `contact`), complétion par Tab et historique.
+- **Terminal** avec ses commandes (`help`, `whoami`, `neofetch`, `ls`, `cat`, `open`, `skills`, `github`, `stage`, `contact`, `lang`), complétion par Tab et historique.
+- **Projets synchronisés avec GitHub** : chaque dépôt public apparaît automatiquement dans Projets, avec sa description, ses langages, ses sujets, ses statistiques et son README affiché dans le site. Les compétences et la pile technique se mettent à jour en même temps (API GitHub, cache local, mode hors ligne).
+- **Bilingue français / anglais** : bouton dans le menu Aide, changement de langue sans recharger la page. La langue du navigateur est détectée à la première visite.
 - **Version simple** (`simple.html`) : tout le CV sur une seule page, lisible et imprimable, pour les recruteurs pressés.
 - **Mobile** : chaque fenêtre devient une application plein écran.
 - **Accessible au clavier** : Tab pour parcourir, Entrée pour ouvrir, Échap pour fermer la fenêtre active.
@@ -27,8 +29,10 @@ en cybersécurité, analyse, développement ou TI.
 | ![Fenêtre Compétences](docs/screenshots/04-competences.png) | ![Terminal avec neofetch](docs/screenshots/05-terminal.png) |
 | **CV.pdf** | **Contact** |
 | ![Fenêtre CV](docs/screenshots/06-cv.png) | ![Fenêtre Contact](docs/screenshots/07-contact.png) |
-| **Menu ChakibOS** | **Version simple** |
-| ![Menu ChakibOS](docs/screenshots/08-menu.png) | ![Version simple du CV](docs/screenshots/09-version-simple.png) |
+| **Menu Aide (langue)** | **Version simple** |
+| ![Menu Aide avec le choix de la langue](docs/screenshots/08-menu.png) | ![Version simple du CV](docs/screenshots/09-version-simple.png) |
+| **README d'un dépôt dans le site** | **Version anglaise** |
+| ![Documentation README de WatchDocs affichée dans le site](docs/screenshots/11-documentation-readme.png) | ![Bureau en anglais](docs/screenshots/12-english.png) |
 
 **Sur mobile**
 
@@ -58,7 +62,9 @@ index.html      Bureau ChakibOS
 simple.html     Version simple et imprimable du CV
 css/os.css      Styles du bureau et des fenêtres
 css/simple.css  Styles de la version simple
-js/data.js      Contenu du portfolio
+js/data.js      Contenu du portfolio (français et anglais)
+js/i18n.js      Traductions de l'interface et changement de langue
+js/github.js    Synchronisation des dépôts publics GitHub, rendu des README
 js/icons.js     Icônes pixel (SVG)
 js/cv.js        Rendu du CV (partagé par la fenêtre CV.pdf et simple.html)
 js/apps.js      Applications : À propos, Projets, Compétences, Contact, CV, etc.
