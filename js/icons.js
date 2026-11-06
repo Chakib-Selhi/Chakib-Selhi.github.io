@@ -27,6 +27,9 @@
       '<svg ' + S + ' width="34" height="40" viewBox="0 0 34 40"><path d="M5 10h24l-2 28H7z" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><path d="M2 8h30M12 4h10v4M12 16v16M17 16v16M22 16v16" fill="none" stroke="' + K + '" stroke-width="2"/></svg>',
     code:
       '<svg ' + S + ' width="42" height="36" viewBox="0 0 42 36"><rect x="2" y="2" width="38" height="32" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="2" y="2" width="38" height="7" fill="#2457D6" stroke="' + K + '" stroke-width="2"/><path d="M15 15l-6 5 6 5M27 15l6 5-6 5M23 13l-4 14" fill="none" stroke="' + K + '" stroke-width="2"/></svg>',
+    // Arbre d'opérations dont les feuilles sont des tables (algèbre relationnelle).
+    relalg:
+      '<svg ' + S + ' width="44" height="40" viewBox="0 0 44 40"><path d="M22 12v5M10 17h24M10 17v5M34 17v5" fill="none" stroke="' + K + '" stroke-width="2"/><rect x="16" y="2" width="12" height="10" fill="#F2A33A" stroke="' + K + '" stroke-width="2"/><path d="M19 7h6" stroke="' + K + '" stroke-width="2"/><rect x="2" y="22" width="17" height="16" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="2" y="22" width="17" height="5" fill="#2457D6" stroke="' + K + '" stroke-width="2"/><path d="M2 32h17M10 27v11" stroke="' + K + '" stroke-width="2"/><rect x="25" y="22" width="17" height="16" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="25" y="22" width="17" height="5" fill="#2F9E5B" stroke="' + K + '" stroke-width="2"/><path d="M25 32h17M33 27v11" stroke="' + K + '" stroke-width="2"/></svg>',
     help:
       '<svg ' + S + ' width="36" height="36" viewBox="0 0 36 36"><rect x="2" y="2" width="32" height="32" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><path d="M12 13c0-4 3-6 6-6s6 2 6 5c0 4-6 4-6 9" fill="none" stroke="' + K + '" stroke-width="3"/><rect x="16.5" y="25" width="3" height="3" fill="' + K + '"/></svg>',
     info:
