@@ -29,8 +29,6 @@ window.PORTFOLIO = {
       fr: ["Cybersécurité", "Analyse", "Développement", "TI"],
       en: ["Cybersecurity", "Analysis", "Development", "IT"]
     },
-    disponibilite: { fr: "Stage à l'été 2028", en: "Internship in summer 2028" },
-    disponibiliteCourt: { fr: "été 2028", en: "summer 2028" },
     courriel: "chakibselhi@gmail.com",
     telephone: "438 490-3941",
     telephoneLien: "+14384903941",

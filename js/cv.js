@@ -37,7 +37,7 @@
     html += "</header>";
 
     html += '<section class="cv__sec"><h2>' + esc(t("cv.objective")) + "</h2>";
-    html += "<p><strong>" + esc(L(p.disponibilite)) + "</strong> " + esc(t("cv.objectiveIn")) + " " + esc(window.I18N.liste(L(p.recherche))) + ".</p>";
+    html += "<p><strong>" + esc(t("cv.objectiveText", { domaines: window.I18N.liste(L(p.recherche)) })) + "</strong></p>";
     html += "<p>" + esc(L(p.accroche)) + "</p></section>";
 
     html += '<section class="cv__sec"><h2>' + esc(t("cv.education")) + "</h2>";

@@ -1,7 +1,7 @@
 # ChakibOS · Portfolio de Chakib Selhi
 
 Portfolio en forme de **bureau rétro** : icônes, fenêtres déplaçables, terminal interactif, CV et barre des tâches.
-Je suis étudiant au baccalauréat en informatique et génie logiciel à l'UQAM et je cherche un **stage pour l'été 2028**
+Je suis étudiant au baccalauréat en informatique et génie logiciel à l'UQAM et je cherche un **stage**
 en cybersécurité, analyse, développement ou TI.
 
 **Site :** [chakib-selhi.github.io](https://chakib-selhi.github.io)

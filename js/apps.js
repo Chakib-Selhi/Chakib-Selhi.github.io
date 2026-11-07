@@ -56,7 +56,7 @@
         '<p class="about__role">' + esc(L(p.titre)) + " · " + esc(L(p.programme)) + ", " + esc(p.ecoleCourt) + "</p>" +
         "<p>" + esc(L(p.accroche)) + "</p>" +
         '<dl class="specs">' + specs +
-        "<dt>" + esc(t("about.status")) + '</dt><dd class="specs__hot">' + esc(t("about.statusValue", { dispo: L(p.disponibiliteCourt) })) + "</dd></dl>" +
+        "<dt>" + esc(t("about.status")) + '</dt><dd class="specs__hot">' + esc(t("about.statusValue")) + "</dd></dl>" +
         '<div class="btn-row">' +
         '<button type="button" class="btn" data-open="competences">' + esc(t("about.skillsBtn")) + "</button>" +
         '<button type="button" class="btn" data-open="cv">' + esc(t("about.cvBtn")) + "</button>" +
@@ -296,7 +296,7 @@
         '<form class="mail">' +
         '<div class="field"><span class="field__label">' + esc(t("contact.to")) + '</span><span class="field__val">' + esc(p.courriel) + '</span><button type="button" class="btn btn--sm" data-copy>' + esc(t("contact.copy")) + "</button></div>" +
         (p.telephone ? '<div class="field"><span class="field__label">' + esc(t("contact.phone")) + '</span><a class="field__val" href="tel:' + esc(p.telephoneLien) + '">' + esc(p.telephone) + "</a></div>" : "") +
-        '<label class="field"><span class="field__label">' + esc(t("contact.subject")) + '</span><input name="objet" type="text" value="' + esc(t("contact.subjectValue", { dispo: L(p.disponibiliteCourt) })) + '"></label>' +
+        '<label class="field"><span class="field__label">' + esc(t("contact.subject")) + '</span><input name="objet" type="text" value="' + esc(t("contact.subjectValue")) + '"></label>' +
         '<label class="field field--col"><span class="field__label">' + esc(t("contact.message")) + '</span><textarea name="message" rows="6" placeholder="' + esc(t("contact.placeholder", { prenom: prenom() })) + '"></textarea></label>' +
         '<div class="btn-row"><span class="contact__note" aria-live="polite"></span><button type="submit" class="btn btn--primary">' + esc(t("contact.send")) + "</button></div>" +
         "</form>" +
@@ -355,7 +355,7 @@
       return (
         '<div class="dlg">' +
         '<div class="dlg__msg">' + I.info +
-        "<p>" + esc(t("stage.text", { prenom: prenom(), domaines: I18N.liste(L(p.recherche)), dispo: L(p.disponibiliteCourt) })) + "</p></div>" +
+        "<p>" + esc(t("stage.text", { prenom: prenom(), domaines: I18N.liste(L(p.recherche)) })) + "</p></div>" +
         '<div class="dlg__btns"><button type="button" class="btn" data-close>' + esc(t("stage.later")) + "</button>" +
         '<button type="button" class="btn btn--primary btn--default" data-open="contact" data-close>' + esc(t("stage.contact")) + "</button></div>" +
         "</div>"

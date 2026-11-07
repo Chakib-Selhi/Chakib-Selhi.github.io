@@ -85,7 +85,6 @@
             print(p.nom + " · " + L(p.titre), "t-bold");
             print(L(p.programme) + ", " + L(p.ecole));
             print(t("term.lookingFor", { d: I18N.liste(L(p.recherche)) }));
-            print(t("term.availability", { v: L(p.disponibilite) }));
           }
         },
         neofetch: {
@@ -98,7 +97,7 @@
             print(pad(t("term.program"), 16) + L(p.programme));
             print(pad(t("term.school"), 16) + p.ecoleCourt);
             p.specs.forEach(function (s) { print(pad(L(s.label), 16) + L(s.valeur)); });
-            print(pad(t("term.status"), 16) + t("term.statusValue", { d: L(p.disponibiliteCourt) }), "t-warn");
+            print(pad(t("term.status"), 16) + t("term.statusValue"), "t-warn");
           }
         },
         ls: {
@@ -153,7 +152,7 @@
           run: function () {
             print(t("term.ok1", { v: L(p.titre).toLowerCase() }), "t-ok");
             print(t("term.ok2", { v: I18N.liste(L(p.recherche), "and") }), "t-ok");
-            print(t("term.ok3", { v: L(p.disponibiliteCourt) }), "t-ok");
+            print(t("term.ok3"), "t-ok");
             print(t("term.wait"), "t-warn");
           }
         },
