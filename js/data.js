@@ -13,7 +13,7 @@ window.PORTFOLIO = {
   profil: {
     nom: "Chakib Selhi",
     initiales: "CS",
-    titre: { fr: "Étudiant en génie logiciel", en: "Software engineering student" },
+    titre: { fr: "Étudiant en génie logiciel, orienté cybersécurité et réseaux", en: "Software engineering student focused on cybersecurity and networking" },
     programme: {
       fr: "Baccalauréat en informatique et génie logiciel",
       en: "Bachelor's degree in Computer Science and Software Engineering"
@@ -22,12 +22,12 @@ window.PORTFOLIO = {
     ecoleCourt: "UQAM",
     lieu: { fr: "Région de Montréal, QC", en: "Montréal area, QC" },
     accroche: {
-      fr: "J'aime comprendre un système de bout en bout : de l'application sur la montre jusqu'au réseau de la maison. Je cherche un stage pour mettre ces compétences au service d'une équipe.",
-      en: "I like understanding a system end to end: from the app on the watch to the home network. I am looking for an internship where I can put these skills to work for a team."
+      fr: "Je m'intéresse à la sécurité des systèmes et des réseaux : comment ils sont construits, comment ils sont attaqués et comment les protéger. Je mets ces notions en pratique dans mon homelab (aucun port entrant ouvert, secrets hors de git, sauvegardes chiffrées) et en compétition avec CyberSci. Je cherche un stage en cybersécurité ou en réseaux.",
+      en: "I am interested in the security of systems and networks: how they are built, how they are attacked and how to protect them. I put these concepts into practice in my homelab (no inbound port open, secrets kept out of git, encrypted backups) and in competition with CyberSci. I am looking for an internship in cybersecurity or networking."
     },
     recherche: {
-      fr: ["Cybersécurité", "Analyse", "Développement", "TI"],
-      en: ["Cybersecurity", "Analysis", "Development", "IT"]
+      fr: ["Cybersécurité", "Réseaux"],
+      en: ["Cybersecurity", "Networking"]
     },
     courriel: "chakibselhi@gmail.com",
     telephone: "438 490-3941",
@@ -35,13 +35,19 @@ window.PORTFOLIO = {
     github: "https://github.com/Chakib-Selhi",
     linkedin: "", // À compléter, ex. "https://www.linkedin.com/in/..."
     cvPdf: "", // À compléter, ex. "assets/CV_Chakib_Selhi.pdf"
+    // Cours en lien avec la cybersécurité et les réseaux (CV, section Formation).
+    cours: [
+      { code: "INF4471", nom: { fr: "Introduction à la sécurité informatique", en: "Introduction to Computer Security" }, enCours: true }
+    ],
     // Résumé affiché dans « À propos » et dans « neofetch ».
     // auto: "langages" ajoute les nouveaux langages trouvés sur GitHub.
     specs: [
-      { label: { fr: "Langages", en: "Languages" }, valeur: "Java · C · C++ · SQL · JavaScript · HTML / CSS · Bash", auto: "langages" },
-      { label: { fr: "Génie logiciel", en: "Software engineering" }, valeur: { fr: "UML · POO · patrons de conception · tests JUnit · Agile", en: "UML · OOP · design patterns · JUnit tests · Agile" } },
-      { label: { fr: "Outils", en: "Tools" }, valeur: "Git · Linux · Docker · Maven · CI/CD" },
-      { label: { fr: "Domaines", en: "Fields" }, valeur: { fr: "Cybersécurité · Analyse · Développement · TI", en: "Cybersecurity · Analysis · Development · IT" } }
+      { label: { fr: "Sécurité", en: "Security" }, valeur: { fr: "Cryptographie · TLS / SSH / VPN · gestion des secrets · intégrité SHA-256", en: "Cryptography · TLS / SSH / VPN · secrets management · SHA-256 integrity" } },
+      { label: { fr: "Réseaux", en: "Networking" }, valeur: { fr: "TCP/IP · réseau local filaire · accès à distance par VPN", en: "TCP/IP · wired LAN · remote access over VPN" } },
+      { label: { fr: "Systèmes", en: "Systems" }, valeur: { fr: "Linux · ligne de commande · scripts shell · Docker · machines virtuelles", en: "Linux · command line · shell scripting · Docker · virtual machines" } },
+      { label: { fr: "Langages", en: "Languages" }, valeur: "Bash · C · C++ · Java · SQL · JavaScript · HTML / CSS", auto: "langages" },
+      { label: { fr: "Outils", en: "Tools" }, valeur: "Git · Docker · gitleaks · CI/CD" },
+      { label: { fr: "Domaines", en: "Fields" }, valeur: { fr: "Cybersécurité · Réseaux", en: "Cybersecurity · Networking" } }
     ]
   },
 
@@ -107,50 +113,6 @@ window.PORTFOLIO = {
 
   projets: [
     {
-      id: "watchdocs",
-      depot: "WatchDocs",
-      nom: "WatchDocs",
-      fichier: "WatchDocs.app",
-      icone: "watch",
-      statut: "publie",
-      annee: "2026",
-      type: { fr: "Application iOS + watchOS", en: "iOS + watchOS app" },
-      langage: "Swift",
-      resume: {
-        fr: "Envoie des PDF, photos, documents Word, Excel et texte de l'iPhone vers l'Apple Watch, puis les lit au poignet, entièrement hors ligne. Aucune limite de pages ni de documents.",
-        en: "Sends PDFs, photos, Word, Excel and text files from the iPhone to the Apple Watch, then reads them on the wrist, fully offline. No page or document limit."
-      },
-      pointsForts: {
-        fr: [
-          "Conversion sur l'iPhone (PDF, images, Word, Excel, texte), car watchOS n'a ni PDFKit, ni QuickLook, ni WebKit.",
-          "Protocole de transfert fiable : un document n'est prêt que si chaque fichier du manifeste est présent et que son empreinte SHA-256 correspond.",
-          "Gère les fichiers reçus dans le désordre, en double, corrompus ou avant leur manifeste, et redemande les fichiers manquants.",
-          "Au plus trois pages décodées en mémoire : un PDF de 1 000 pages s'ouvre instantanément.",
-          "Testable par conception : la connexion montre-téléphone est derrière un protocole, et toute la logique est testée avec un lien en mémoire, y compris sur Linux.",
-          "Aucun serveur, aucune analytique : les documents circulent seulement entre l'iPhone et la montre."
-        ],
-        en: [
-          "On-device conversion on the iPhone (PDF, images, Word, Excel, text), since watchOS has no PDFKit, QuickLook or WebKit.",
-          "Reliable transfer protocol: a document is ready only when every file in its manifest is present and its SHA-256 hash matches.",
-          "Handles files that arrive out of order, twice, corrupted or before their manifest, and asks again for missing files.",
-          "At most three decoded pages in memory: a 1,000-page PDF opens instantly.",
-          "Testable by design: the watch-phone link sits behind a protocol, and all the logic is tested with an in-memory link, Linux included.",
-          "No server and no analytics: documents only travel between the iPhone and the watch."
-        ]
-      },
-      appris: [],
-      pile: ["Swift 6", "SwiftUI", "watchOS", "WatchConnectivity", "SwiftData", "PDFKit", "CryptoKit", "XcodeGen", "Swift Testing", "XCUITest", "GitHub Actions"],
-      images: [
-        { src: "assets/projets/watchdocs/watch-library.png", alt: { fr: "Bibliothèque de documents sur l'Apple Watch", en: "Document library on the Apple Watch" } },
-        { src: "assets/projets/watchdocs/watch-page-reader.png", alt: { fr: "Lecteur de pages sur l'Apple Watch, page 2 sur 12", en: "Page reader on the Apple Watch, page 2 of 12" } },
-        { src: "assets/projets/watchdocs/iphone-library.png", alt: { fr: "Documents envoyés et état de livraison sur l'iPhone", en: "Sent documents and delivery status on the iPhone" } }
-      ],
-      liens: [
-        { label: { fr: "Code source", en: "Source code" }, url: "https://github.com/Chakib-Selhi/WatchDocs" },
-        { label: "Architecture", url: "https://github.com/Chakib-Selhi/WatchDocs/blob/main/docs/ARCHITECTURE.md" }
-      ]
-    },
-    {
       id: "homelab",
       depot: "homelab",
       nom: "Homelab & NAS",
@@ -158,7 +120,7 @@ window.PORTFOLIO = {
       icone: "server",
       statut: "en-cours",
       annee: "2026",
-      type: { fr: "Infrastructure et sécurité", en: "Infrastructure and security" },
+      type: { fr: "Réseau, infrastructure et sécurité", en: "Networking, infrastructure and security" },
       langage: "Shell · Docker",
       resume: {
         fr: "Stockage et services auto-hébergés sur un NAS 4 baies, avec un lien filaire qui passe par le câblage coaxial existant (MoCA). Objectif : un seul stockage redondant, des services conteneurisés et la pratique de la sécurité opérationnelle.",
@@ -166,19 +128,19 @@ window.PORTFOLIO = {
       },
       pointsForts: {
         fr: [
-          "Réseau : lien MoCA 2.5 sur le coaxial existant, filtre au point d'entrée, switch 2.5GbE au sous-sol.",
-          "Services Docker : Immich (photos), Jellyfin (médias), Home Assistant (domotique).",
           "Aucun port entrant ouvert : accès à distance par un réseau privé Tailscale.",
           "Secrets hors de git : analyse gitleaks avant chaque commit et dans la CI à chaque push.",
           "Sauvegardes 3-2-1 : pool redondant local, copie chiffrée hors site et copie à froid.",
+          "Réseau : lien MoCA 2.5 sur le coaxial existant, filtre au point d'entrée, switch 2.5GbE au sous-sol.",
+          "Services Docker : Immich (photos), Jellyfin (médias), Home Assistant (domotique).",
           "Quatre décisions d'architecture documentées (ADR)."
         ],
         en: [
-          "Network: MoCA 2.5 link over the existing coax, point-of-entry filter, 2.5GbE switch in the basement.",
-          "Docker services: Immich (photos), Jellyfin (media), Home Assistant (home automation).",
           "No inbound port open: remote access through a private Tailscale network.",
           "Secrets kept out of git: gitleaks scan before every commit and in CI on every push.",
           "3-2-1 backups: local redundant pool, encrypted offsite copy and cold copy.",
+          "Network: MoCA 2.5 link over the existing coax, point-of-entry filter, 2.5GbE switch in the basement.",
+          "Docker services: Immich (photos), Jellyfin (media), Home Assistant (home automation).",
           "Four documented architecture decisions (ADRs)."
         ]
       },
@@ -199,6 +161,50 @@ window.PORTFOLIO = {
       liens: [
         { label: { fr: "Code source", en: "Source code" }, url: "https://github.com/Chakib-Selhi/homelab" }
       ]
+    },
+    {
+      id: "watchdocs",
+      depot: "WatchDocs",
+      nom: "WatchDocs",
+      fichier: "WatchDocs.app",
+      icone: "watch",
+      statut: "publie",
+      annee: "2026",
+      type: { fr: "Application iOS + watchOS", en: "iOS + watchOS app" },
+      langage: "Swift",
+      resume: {
+        fr: "Envoie des PDF, photos, documents Word, Excel et texte de l'iPhone vers l'Apple Watch avec un protocole de transfert vérifié (SHA-256), puis les lit au poignet, entièrement hors ligne et sans serveur.",
+        en: "Sends PDFs, photos, Word, Excel and text files from the iPhone to the Apple Watch over a verified transfer protocol (SHA-256), then reads them on the wrist, fully offline and with no server."
+      },
+      pointsForts: {
+        fr: [
+          "Protocole de transfert fiable : un document n'est prêt que si chaque fichier du manifeste est présent et que son empreinte SHA-256 correspond.",
+          "Gère les fichiers reçus dans le désordre, en double, corrompus ou avant leur manifeste, et redemande les fichiers manquants.",
+          "Aucun serveur, aucune analytique : les documents circulent seulement entre l'iPhone et la montre.",
+          "Conversion sur l'iPhone (PDF, images, Word, Excel, texte), car watchOS n'a ni PDFKit, ni QuickLook, ni WebKit.",
+          "Au plus trois pages décodées en mémoire : un PDF de 1 000 pages s'ouvre instantanément.",
+          "Testable par conception : la connexion montre-téléphone est derrière un protocole, et toute la logique est testée avec un lien en mémoire, y compris sur Linux."
+        ],
+        en: [
+          "Reliable transfer protocol: a document is ready only when every file in its manifest is present and its SHA-256 hash matches.",
+          "Handles files that arrive out of order, twice, corrupted or before their manifest, and asks again for missing files.",
+          "No server and no analytics: documents only travel between the iPhone and the watch.",
+          "On-device conversion on the iPhone (PDF, images, Word, Excel, text), since watchOS has no PDFKit, QuickLook or WebKit.",
+          "At most three decoded pages in memory: a 1,000-page PDF opens instantly.",
+          "Testable by design: the watch-phone link sits behind a protocol, and all the logic is tested with an in-memory link, Linux included."
+        ]
+      },
+      appris: [],
+      pile: ["Swift 6", "SwiftUI", "watchOS", "WatchConnectivity", "SwiftData", "PDFKit", "CryptoKit", "XcodeGen", "Swift Testing", "XCUITest", "GitHub Actions"],
+      images: [
+        { src: "assets/projets/watchdocs/watch-library.png", alt: { fr: "Bibliothèque de documents sur l'Apple Watch", en: "Document library on the Apple Watch" } },
+        { src: "assets/projets/watchdocs/watch-page-reader.png", alt: { fr: "Lecteur de pages sur l'Apple Watch, page 2 sur 12", en: "Page reader on the Apple Watch, page 2 of 12" } },
+        { src: "assets/projets/watchdocs/iphone-library.png", alt: { fr: "Documents envoyés et état de livraison sur l'iPhone", en: "Sent documents and delivery status on the iPhone" } }
+      ],
+      liens: [
+        { label: { fr: "Code source", en: "Source code" }, url: "https://github.com/Chakib-Selhi/WatchDocs" },
+        { label: "Architecture", url: "https://github.com/Chakib-Selhi/WatchDocs/blob/main/docs/ARCHITECTURE.md" }
+      ]
     }
   ],
 
@@ -214,48 +220,83 @@ window.PORTFOLIO = {
     }
   ],
 
+  // Compétitions et bénévolat (fenêtre Activités, terminal et CV).
+  activites: [
+    {
+      id: "cybersci",
+      nom: "CyberSci · Canada's Cyber Security Challenge",
+      role: { fr: "Compétiteur, équipe étudiante", en: "Student competitor, team member" },
+      periode: { fr: "À venir", en: "Upcoming" },
+      texte: {
+        fr: "Compétition nationale de cybersécurité pour les étudiants du postsecondaire : défis de type capture-the-flag (CTF) en équipe et analyse de systèmes vulnérables sous contrainte de temps.",
+        en: "National cybersecurity competition for post-secondary students: team capture-the-flag (CTF) challenges and analysis of vulnerable systems under time pressure."
+      }
+    },
+    {
+      id: "rencontres-linux",
+      nom: "Rencontres Linux au Québec",
+      role: { fr: "Bénévole", en: "Volunteer" },
+      periode: "",
+      texte: {
+        fr: "Bénévolat auprès de la communauté Linux et logiciel libre du Québec.",
+        en: "Volunteering with the Linux and open source community in Québec."
+      }
+    },
+    {
+      id: "confoo",
+      nom: "ConFoo",
+      role: { fr: "Bénévole à l'organisation", en: "Volunteer staff" },
+      periode: "2024 · 2025",
+      texte: {
+        fr: "Conférence de développement full stack : installation de l'équipement, inscription des participants, préparation de plus de 700 sacs d'accueil et soutien technique aux présentations.",
+        en: "Full stack developer conference: equipment setup, attendee registration, preparation of over 700 attendee bags and technical support for sessions."
+      }
+    }
+  ],
+
   // Compétences du bac en informatique et génie logiciel (UQAM) et des projets.
   // preuves = id des projets où la compétence est mise en pratique.
   competences: [
     {
-      id: "langages",
-      cat: { fr: "Langages", en: "Languages" },
-      items: ["Java", "C", "C++", "SQL", "JavaScript", "HTML / CSS", "Bash / Shell", "Swift"],
-      preuves: ["watchdocs", "homelab"]
+      id: "securite",
+      cat: { fr: "Sécurité", en: "Security" },
+      items: [
+        { fr: "Cryptographie (AES, RSA, SHA)", en: "Cryptography (AES, RSA, SHA)" },
+        "TLS · SSH · VPN",
+        { fr: "Réduction de la surface d'attaque (aucun port entrant)", en: "Attack surface reduction (no inbound ports)" },
+        { fr: "Gestion des secrets (gitleaks)", en: "Secrets management (gitleaks)" },
+        { fr: "Vérification d'intégrité SHA-256", en: "SHA-256 integrity checks" },
+        { fr: "Sauvegardes chiffrées 3-2-1", en: "Encrypted 3-2-1 backups" },
+        { fr: "Analyse de risques", en: "Risk analysis" }
+      ],
+      preuves: ["homelab", "watchdocs"]
     },
     {
-      id: "genie",
-      cat: { fr: "Génie logiciel", en: "Software engineering" },
+      id: "systemes",
+      cat: { fr: "Réseaux et systèmes", en: "Networking and systems" },
       items: [
-        "UML",
-        { fr: "Programmation orientée objet", en: "Object-oriented programming" },
-        { fr: "Principes SOLID", en: "SOLID principles" },
-        { fr: "Patrons de conception", en: "Design patterns" },
-        { fr: "Tests unitaires (JUnit)", en: "Unit testing (JUnit)" },
-        "TDD",
-        { fr: "Refactorisation", en: "Refactoring" },
-        "Agile / Scrum"
+        { fr: "Réseaux TCP/IP", en: "TCP/IP networking" },
+        { fr: "Réseau local filaire (Ethernet 2.5GbE)", en: "Wired LAN (2.5GbE Ethernet)" },
+        { fr: "Accès à distance par VPN", en: "Remote access over VPN" },
+        "Linux / Unix",
+        { fr: "Terminal", en: "Command line" },
+        { fr: "Scripts shell", en: "Shell scripting" },
+        { fr: "Machines virtuelles", en: "Virtual machines" },
+        { fr: "Processus et threads", en: "Processes and threads" }
       ],
-      preuves: ["watchdocs"]
+      preuves: ["homelab"]
     },
     {
       id: "outils",
       cat: { fr: "Outils et DevOps", en: "Tools and DevOps" },
-      items: ["Git", "GitHub / GitLab", "Maven", "Make", "CI/CD (GitHub Actions)", "Docker", "IntelliJ IDEA", "Xcode"],
-      preuves: ["watchdocs", "homelab"]
+      items: ["Docker", "Git", "gitleaks", "CI/CD (GitHub Actions)", "GitHub / GitLab", "Maven", "Make", "IntelliJ IDEA", "Xcode"],
+      preuves: ["homelab", "watchdocs"]
     },
     {
-      id: "systemes",
-      cat: { fr: "Systèmes et réseaux", en: "Systems and networks" },
-      items: [
-        "Linux / Unix",
-        { fr: "Terminal", en: "Command line" },
-        { fr: "Scripts shell", en: "Shell scripting" },
-        { fr: "Processus et threads", en: "Processes and threads" },
-        { fr: "Réseaux TCP/IP", en: "TCP/IP networking" },
-        { fr: "Machines virtuelles", en: "Virtual machines" }
-      ],
-      preuves: ["homelab"]
+      id: "langages",
+      cat: { fr: "Langages", en: "Languages" },
+      items: ["Bash / Shell", "C", "C++", "Java", "SQL", "JavaScript", "HTML / CSS", "Swift"],
+      preuves: ["homelab", "watchdocs"]
     },
     {
       id: "bd",
@@ -271,17 +312,19 @@ window.PORTFOLIO = {
       preuves: []
     },
     {
-      id: "securite",
-      cat: { fr: "Sécurité", en: "Security" },
+      id: "genie",
+      cat: { fr: "Génie logiciel", en: "Software engineering" },
       items: [
-        { fr: "Cryptographie (AES, RSA, SHA)", en: "Cryptography (AES, RSA, SHA)" },
-        "TLS · SSH · VPN",
-        { fr: "Analyse de risques", en: "Risk analysis" },
-        { fr: "Gestion des secrets (gitleaks)", en: "Secrets management (gitleaks)" },
-        { fr: "Sauvegardes chiffrées 3-2-1", en: "Encrypted 3-2-1 backups" },
-        { fr: "Vérification d'intégrité SHA-256", en: "SHA-256 integrity checks" }
+        "UML",
+        { fr: "Programmation orientée objet", en: "Object-oriented programming" },
+        { fr: "Principes SOLID", en: "SOLID principles" },
+        { fr: "Patrons de conception", en: "Design patterns" },
+        { fr: "Tests unitaires (JUnit)", en: "Unit testing (JUnit)" },
+        "TDD",
+        { fr: "Refactorisation", en: "Refactoring" },
+        "Agile / Scrum"
       ],
-      preuves: ["homelab", "watchdocs"]
+      preuves: ["watchdocs"]
     }
   ]
 };

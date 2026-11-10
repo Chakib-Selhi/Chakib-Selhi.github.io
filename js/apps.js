@@ -41,7 +41,7 @@
   /* ---------- À propos ---------- */
   var about = {
     title: function () { return t("about.title", { prenom: prenom() }); },
-    size: [560, 440],
+    size: [600, 610],
     pos: function () { return [128, 14]; },
     render: function () {
       var p = P();
@@ -264,6 +264,22 @@
     }
   };
 
+  /* ---------- Activités (compétitions et bénévolat) ---------- */
+  var activites = {
+    title: function () { return t("activites.title"); },
+    size: [640, 520],
+    render: function () {
+      var html = '<div class="skills skills--list">';
+      (D().activites || []).forEach(function (a) {
+        var meta = [L(a.role), L(a.periode)].filter(Boolean).join(" · ");
+        html += '<section class="skill"><h4 class="pixel">' + esc(a.nom) + "</h4>";
+        html += '<p class="skill__meta">' + esc(meta) + "</p>";
+        html += '<p class="skill__text">' + esc(L(a.texte)) + "</p></section>";
+      });
+      return html + "</div>";
+    }
+  };
+
   /* ---------- Terminal ---------- */
   var terminal = {
     title: function () { return t("terminal.title"); },
@@ -406,6 +422,7 @@
     projets: projets,
     projet: projet,
     competences: competences,
+    activites: activites,
     terminal: terminal,
     contact: contact,
     cv: cv,
@@ -420,6 +437,7 @@
     { app: "projets", label: "icon.projets", icon: "folder" },
     { app: "about", label: "icon.about", icon: "user" },
     { app: "competences", label: "icon.competences", icon: "gear" },
+    { app: "activites", label: "icon.activites", icon: "flag" },
     { app: "terminal", label: "icon.terminal", icon: "terminal" },
     { app: "cv", label: "icon.cv", icon: "doc" },
     { app: "contact", label: "icon.contact", icon: "mail" },

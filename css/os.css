@@ -242,6 +242,9 @@ code, kbd { font-family: var(--font-mono); }
 .skill { border: 2px solid var(--ink); background: var(--face); padding: 12px 14px; }
 .skill h4 { margin: 0; font-size: 13px; }
 .skill__proof { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
+.skills--list { grid-template-columns: 1fr; }
+.skill__meta { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+.skill__text { margin: 8px 0 0; font-size: 13px; line-height: 1.5; }
 
 /* ===== Terminal ===== */
 .win--terminal .win__body { background: #0D0F0D; overflow: hidden; }

@@ -41,7 +41,15 @@
     html += "<p>" + esc(L(p.accroche)) + "</p></section>";
 
     html += '<section class="cv__sec"><h2>' + esc(t("cv.education")) + "</h2>";
-    html += "<p><strong>" + esc(L(p.programme)) + "</strong> · " + esc(t("cv.inProgress")) + "<br>" + esc(L(p.ecole)) + "</p></section>";
+    html += "<p><strong>" + esc(L(p.programme)) + "</strong> · " + esc(t("cv.inProgress")) + "<br>" + esc(L(p.ecole)) + "</p>";
+    if (p.cours && p.cours.length) {
+      html += "<p>" + esc(t("cv.courses")) + " " + p.cours.map(function (c) {
+        return esc(c.code + " " + L(c.nom)) + (c.enCours ? " (" + esc(t("cv.inProgress")) + ")" : "");
+      }).join(", ") + "</p>";
+    }
+    html += "</section>";
+
+    html += skillsHTML(D);
 
     html += '<section class="cv__sec"><h2>' + esc(t("cv.projects")) + "</h2>";
     D.projets.forEach(function (pr) {
@@ -58,12 +66,24 @@
     });
     html += "</section>";
 
-    html += '<section class="cv__sec"><h2>' + esc(t("cv.skills")) + '</h2><dl class="cv__skills">';
+    if (D.activites && D.activites.length) {
+      html += '<section class="cv__sec"><h2>' + esc(t("cv.activities")) + "</h2>";
+      D.activites.forEach(function (a) {
+        var meta = [L(a.role), L(a.periode)].filter(Boolean).join(" · ");
+        html += '<div class="cv__proj"><h3>' + esc(a.nom) + ' <span class="cv__meta">' + esc(meta) + "</span></h3>";
+        html += "<p>" + esc(L(a.texte)) + "</p></div>";
+      });
+      html += "</section>";
+    }
+    return html;
+  };
+
+  function skillsHTML(D) {
+    var html = '<section class="cv__sec"><h2>' + esc(t("cv.skills")) + '</h2><dl class="cv__skills">';
     D.competences.forEach(function (c) {
       if (!c.items.length) return;
       html += "<dt>" + esc(L(c.cat)) + "</dt><dd>" + esc(c.items.map(L).join(", ")) + "</dd>";
     });
-    html += "</dl></section>";
-    return html;
-  };
+    return html + "</dl></section>";
+  }
 })();

@@ -13,7 +13,7 @@
     fr: {
       "meta.title": "ChakibOS · Portfolio de Chakib Selhi",
       "meta.titleSimple": "CV · Chakib Selhi, étudiant en génie logiciel",
-      "meta.description": "Portfolio de Chakib Selhi, étudiant en génie logiciel à l'UQAM, à la recherche d'un stage en cybersécurité, analyse, développement ou TI.",
+      "meta.description": "Portfolio de Chakib Selhi, étudiant en génie logiciel à l'UQAM orienté cybersécurité et réseaux, à la recherche d'un stage.",
       "skip": "Aller à la version simple du CV",
       "h1": "Chakib Selhi, étudiant en génie logiciel à l'UQAM : portfolio",
       "noscript": "ChakibOS a besoin de JavaScript.",
@@ -43,6 +43,7 @@
       "icon.projets": "Projets",
       "icon.about": "À propos",
       "icon.competences": "Compétences",
+      "icon.activites": "Activités",
       "icon.terminal": "Terminal",
       "icon.cv": "CV.pdf",
       "icon.contact": "Contact",
@@ -101,6 +102,7 @@
       "projet.typeRepo": "Dépôt GitHub",
 
       "competences.title": "Compétences",
+      "activites.title": "Activités",
       "competences.proof": "Mis en pratique dans :",
       "competences.frameworks": "Frameworks et plateformes",
 
@@ -130,6 +132,8 @@
       "cv.inProgress": "en cours",
       "cv.projects": "Projets",
       "cv.skills": "Compétences",
+      "cv.courses": "Cours en lien :",
+      "cv.activities": "Activités",
 
       "stage.text": "{prenom} est à la recherche d'un stage en {domaines}. Voulez-vous le contacter ?",
       "stage.later": "Plus tard",
@@ -173,6 +177,7 @@
       "term.d.cat": "cat <projet> : résumé d'un projet",
       "term.d.open": "open <fenêtre|projet>",
       "term.d.skills": "pile technique",
+      "term.d.activites": "compétitions et bénévolat",
       "term.d.github": "dépôts GitHub synchronisés",
       "term.d.stage": "état de ma recherche de stage",
       "term.d.contact": "me joindre",
@@ -207,7 +212,7 @@
     en: {
       "meta.title": "ChakibOS · Chakib Selhi's portfolio",
       "meta.titleSimple": "Résumé · Chakib Selhi, software engineering student",
-      "meta.description": "Portfolio of Chakib Selhi, software engineering student at UQAM, looking for an internship in cybersecurity, analysis, development or IT.",
+      "meta.description": "Portfolio of Chakib Selhi, software engineering student at UQAM focused on cybersecurity and networking, looking for an internship.",
       "skip": "Skip to the simple résumé",
       "h1": "Chakib Selhi, software engineering student at UQAM: portfolio",
       "noscript": "ChakibOS needs JavaScript.",
@@ -237,6 +242,7 @@
       "icon.projets": "Projects",
       "icon.about": "About",
       "icon.competences": "Skills",
+      "icon.activites": "Activities",
       "icon.terminal": "Terminal",
       "icon.cv": "Resume.pdf",
       "icon.contact": "Contact",
@@ -295,6 +301,7 @@
       "projet.typeRepo": "GitHub repository",
 
       "competences.title": "Skills",
+      "activites.title": "Activities",
       "competences.proof": "Applied in:",
       "competences.frameworks": "Frameworks and platforms",
 
@@ -324,6 +331,8 @@
       "cv.inProgress": "in progress",
       "cv.projects": "Projects",
       "cv.skills": "Skills",
+      "cv.courses": "Relevant coursework:",
+      "cv.activities": "Activities",
 
       "stage.text": "{prenom} is looking for an internship in {domaines}. Would you like to contact him?",
       "stage.later": "Later",
@@ -367,6 +376,7 @@
       "term.d.cat": "cat <project>: project summary",
       "term.d.open": "open <window|project>",
       "term.d.skills": "tech stack",
+      "term.d.activites": "competitions and volunteering",
       "term.d.github": "synced GitHub repositories",
       "term.d.stage": "my internship search status",
       "term.d.contact": "reach me",

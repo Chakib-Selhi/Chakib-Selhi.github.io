@@ -1,8 +1,8 @@
 # ChakibOS · Portfolio de Chakib Selhi
 
 Portfolio en forme de **bureau rétro** : icônes, fenêtres déplaçables, terminal interactif, CV et barre des tâches.
-Je suis étudiant au baccalauréat en informatique et génie logiciel à l'UQAM et je cherche un **stage**
-en cybersécurité, analyse, développement ou TI.
+Je suis étudiant au baccalauréat en informatique et génie logiciel à l'UQAM, orienté **cybersécurité et réseaux**,
+et je cherche un **stage** dans ces domaines.
 
 **Site :** [chakib-selhi.github.io](https://chakib-selhi.github.io)
 
@@ -11,8 +11,8 @@ en cybersécurité, analyse, développement ou TI.
 ## Fonctionnalités
 
 - **Gestionnaire de fenêtres** écrit à la main : déplacement, redimensionnement, réduction, plein écran, pile de fenêtres et barre des tâches.
-- **Applications** : À propos, Projets (explorateur de fichiers + fiche de chaque projet), Compétences, CV.pdf, Contact.
-- **Terminal** avec ses commandes (`help`, `whoami`, `neofetch`, `ls`, `cat`, `open`, `skills`, `github`, `stage`, `contact`, `lang`), complétion par Tab et historique.
+- **Applications** : À propos, Projets (explorateur de fichiers + fiche de chaque projet), Compétences, Activités (CTF et bénévolat), CV.pdf, Contact.
+- **Terminal** avec ses commandes (`help`, `whoami`, `neofetch`, `ls`, `cat`, `open`, `skills`, `activities`, `github`, `stage`, `contact`, `lang`), complétion par Tab et historique.
 - **Projets synchronisés avec GitHub** : chaque dépôt public apparaît automatiquement dans Projets, avec sa description, ses langages, ses sujets, ses statistiques et son README affiché dans le site. Un dépôt supprimé ou passé en privé disparaît du site. Les compétences et la pile technique se mettent à jour en même temps (API GitHub, requêtes conditionnelles, mode hors ligne).
 - **Bilingue français / anglais** : bouton dans le menu Aide, changement de langue sans recharger la page. La langue du navigateur est détectée à la première visite.
 - **Version simple** (`simple.html`) : tout le CV sur une seule page, lisible et imprimable, pour les recruteurs pressés.

@@ -17,6 +17,7 @@
   var TARGETS = {
     projets: "projets", projects: "projets", about: "about", apropos: "about",
     competences: "competences", skills: "competences", cv: "cv", resume: "cv",
+    activites: "activites", activities: "activites",
     contact: "contact", aide: "aide", help: "aide"
   };
 
@@ -65,7 +66,7 @@
       }
       function blank() { print(" "); }
       function ids() { return D().projets.map(function (x) { return x.id; }); }
-      function targetNames() { return Object.keys(TARGETS).filter(function (k) { return I18N.lang === "fr" ? k !== "projects" && k !== "skills" && k !== "resume" && k !== "help" : k !== "projets" && k !== "competences" && k !== "apropos" && k !== "aide"; }); }
+      function targetNames() { return Object.keys(TARGETS).filter(function (k) { return I18N.lang === "fr" ? k !== "projects" && k !== "skills" && k !== "resume" && k !== "help" && k !== "activities" : k !== "projets" && k !== "competences" && k !== "apropos" && k !== "aide" && k !== "activites"; }); }
 
       var commands = {
         help: {
@@ -135,6 +136,15 @@
             });
           }
         },
+        activities: {
+          desc: "term.d.activites",
+          run: function () {
+            (D().activites || []).forEach(function (a) {
+              print(a.nom, "t-bold");
+              print([L(a.role), L(a.periode)].filter(Boolean).join(" · "), "t-dim");
+            });
+          }
+        },
         github: {
           desc: "term.d.github",
           run: function () {
@@ -180,6 +190,7 @@
         clear: { desc: "term.d.clear", run: function () { out.textContent = ""; } },
         exit: { desc: "term.d.exit", run: function () { api.close(win); } },
         competences: { hidden: true, run: function () { commands.skills.run(); } },
+        activites: { hidden: true, run: function () { commands.activities.run(); } },
         sudo: { hidden: true, run: function () { print(t("term.sudo"), "t-err"); } },
         rm: { hidden: true, run: function (args) { print(args.indexOf("-rf") !== -1 ? t("term.rmrf") : t("term.rm"), "t-err"); } },
         cd: { hidden: true, run: function () { print(t("term.cd"), "t-dim"); } },
