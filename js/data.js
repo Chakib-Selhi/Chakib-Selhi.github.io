@@ -22,8 +22,8 @@ window.PORTFOLIO = {
     ecoleCourt: "UQAM",
     lieu: { fr: "Région de Montréal, QC", en: "Montréal area, QC" },
     accroche: {
-      fr: "Je m'intéresse à la sécurité des systèmes et des réseaux : comment ils sont construits, comment ils sont attaqués et comment les protéger. Je mets ces notions en pratique dans mon homelab (aucun port entrant ouvert, secrets hors de git, sauvegardes chiffrées) et en compétition avec CyberSci. Je cherche un stage en cybersécurité ou en réseaux.",
-      en: "I am interested in the security of systems and networks: how they are built, how they are attacked and how to protect them. I put these concepts into practice in my homelab (no inbound port open, secrets kept out of git, encrypted backups) and in competition with CyberSci. I am looking for an internship in cybersecurity or networking."
+      fr: "Je m'intéresse à la sécurité des systèmes et des réseaux : comment ils sont construits, comment ils sont attaqués et comment les protéger. Je mets ces notions en pratique dans mon homelab et en compétition avec CyberSci. Je cherche un stage en cybersécurité ou en réseaux.",
+      en: "I am interested in the security of systems and networks: how they are built, how they are attacked and how to protect them. I put these concepts into practice in my homelab and in competition with CyberSci. I am looking for an internship in cybersecurity or networking."
     },
     recherche: {
       fr: ["Cybersécurité", "Réseaux"],
