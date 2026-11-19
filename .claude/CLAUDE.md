@@ -10,6 +10,7 @@ Site : https://chakib-selhi.github.io (GitHub Pages, branche `main`).
 - Auteur : `Chakib Selhi <chakibselhi@gmail.com>`. Compte GitHub personnel `Chakib-Selhi` seulement, jamais celui de l'école.
 - Messages en français, style Conventional Commits (`feat(projets): …`, `fix(cache): …`, `docs: …`), avec un corps qui explique le changement.
 - Des commits séparés et réguliers, pour montrer un travail suivi.
+- Pousser directement sur `main`, jamais de branche parallèle. Ne pousser que lorsque Chakib le demande.
 - Activer le hook une fois par clone : `git config core.hooksPath .githooks` (il met à jour `?v=` dans index.html et simple.html quand css/ ou js/ change).
 
 ### Contenu du site
@@ -19,6 +20,7 @@ Site : https://chakib-selhi.github.io (GitHub Pages, branche `main`).
 - Le dépôt du portfolio ne doit jamais apparaître sur le site.
 - Ne pas ajouter d'outils ou de compétences non confirmés par Chakib (ex. Wireshark, nmap, Kali Linux).
 - Tout texte existe en FR et en EN.
+- Chaque projet a une icône différente, dans le thème du projet. Pour un nouveau dépôt, dessiner une icône dans `js/icons.js` et l'imposer dans `github.icones` (data.js). Sinon, `assignIcons()` (github.js) choisit une icône thématique libre, puis une icône générique unique (`projectIcon(n)`).
 
 ### README
 Ne pas remettre les sections « Modifier le contenu », « Lancer en local » et « Publier ».
@@ -52,7 +54,7 @@ Concept : bureau rétro avec fenêtres déplaçables, barre de menus, barre des 
 - `reset()` restaure `BASE` avant chaque `merge()` : un dépôt supprimé ou privé disparaît.
 - Exclus : forks, dépôt de profil, `<user>.github.io`, liste `github.exclure`.
 - Projet rédigé associé par `depot` (insensible à la casse), sinon projet automatique `gh-<slug>`.
-- Langages ≥ 5 % et `github.sujets` ajoutés aux compétences. Icônes via `github.icones` ou sujets.
+- Langages ≥ 5 % et `github.sujets` ajoutés aux compétences. Icônes : `github.icones`, sinon `iconCandidates()` selon les sujets, puis `assignIcons()` garantit l'unicité (dépôts traités du plus ancien au plus récent).
 - README des projets : raw.githubusercontent.com, Markdown maison, puis `sanitize()` (liste blanche DOMParser, liens `javascript:`/`data:` retirés). Cache sessionStorage `chakibos-readme:<repo>:<pushed>`.
 - `os.js` attend `GITHUB.sync()` au plus 3,5 s pendant le démarrage.
 
