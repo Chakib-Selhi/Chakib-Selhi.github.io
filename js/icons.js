@@ -30,6 +30,9 @@
     // Arbre d'opérations dont les feuilles sont des tables (algèbre relationnelle).
     relalg:
       '<svg ' + S + ' width="44" height="40" viewBox="0 0 44 40"><path d="M22 12v5M10 17h24M10 17v5M34 17v5" fill="none" stroke="' + K + '" stroke-width="2"/><rect x="16" y="2" width="12" height="10" fill="#F2A33A" stroke="' + K + '" stroke-width="2"/><path d="M19 7h6" stroke="' + K + '" stroke-width="2"/><rect x="2" y="22" width="17" height="16" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="2" y="22" width="17" height="5" fill="#2457D6" stroke="' + K + '" stroke-width="2"/><path d="M2 32h17M10 27v11" stroke="' + K + '" stroke-width="2"/><rect x="25" y="22" width="17" height="16" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="25" y="22" width="17" height="5" fill="#2F9E5B" stroke="' + K + '" stroke-width="2"/><path d="M25 32h17M33 27v11" stroke="' + K + '" stroke-width="2"/></svg>',
+    // Écran radar : écoute passive du réseau et inventaire des appareils (NetLedger).
+    radar:
+      '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="42" height="42" viewBox="0 0 42 42"><rect x="2" y="2" width="38" height="38" fill="#EFEBE2" stroke="' + K + '" stroke-width="2" shape-rendering="crispEdges"/><circle cx="21" cy="21" r="15" fill="' + K + '"/><circle cx="21" cy="21" r="10" fill="none" stroke="#2F9E5B" stroke-width="2"/><circle cx="21" cy="21" r="4.5" fill="none" stroke="#2F9E5B" stroke-width="2"/><path d="M21 21L31.5 10.5" stroke="#7CFC9A" stroke-width="2.5"/><rect x="25" y="25" width="4" height="4" fill="#F2A33A"/><rect x="11" y="14" width="3" height="3" fill="#7CFC9A"/><rect x="16" y="29" width="3" height="3" fill="#7CFC9A"/><rect x="20" y="20" width="2" height="2" fill="#7CFC9A"/></svg>',
     // Drapeau de capture-the-flag (fenêtre Activités).
     flag:
       '<svg ' + S + ' width="36" height="42" viewBox="0 0 36 42"><path d="M7 3v36" stroke="' + K + '" stroke-width="3"/><path d="M9 4h23l-6 8 6 8H9z" fill="#B3361A" stroke="' + K + '" stroke-width="2"/><path d="M14 9h7" stroke="#FFFFFF" stroke-width="2"/><rect x="2" y="37" width="12" height="4" fill="' + K + '"/></svg>',
@@ -47,5 +50,24 @@
       '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="none" stroke="' + K + '" stroke-width="2"/></svg>',
     lock:
       '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+  };
+
+  /*
+   * Icône de projet générique et unique : fenêtre de code dont la couleur de l'en-tête et le
+   * symbole changent avec n. Sert quand aucune icône thématique n'est libre.
+   */
+  var COULEURS = ["#2F9E5B", "#B3361A", "#F2A33A", "#7B4BC9", "#1E8C8C", "#C94B8A", "#2457D6"];
+  var SYMBOLES = [
+    "M13 14h16M13 20h16M13 26h10",
+    "M17 14c-3 0-3 1-3 3v1l-2 2 2 2v1c0 2 0 3 3 3M25 14c3 0 3 1 3 3v1l2 2-2 2v1c0 2 0 3-3 3",
+    "M17 13l-2 14M25 13l-2 14M12 18h18M11 23h18"
+  ];
+  window.projectIcon = function (n) {
+    var id = "projet-" + n;
+    if (!window.ICONS[id]) {
+      var c = COULEURS[n % COULEURS.length], g = SYMBOLES[Math.floor(n / COULEURS.length) % SYMBOLES.length];
+      window.ICONS[id] = '<svg ' + S + ' width="42" height="36" viewBox="0 0 42 36"><rect x="2" y="2" width="38" height="32" fill="#FFFFFF" stroke="' + K + '" stroke-width="2"/><rect x="2" y="2" width="38" height="7" fill="' + c + '" stroke="' + K + '" stroke-width="2"/><path d="' + g + '" fill="none" stroke="' + K + '" stroke-width="2"/></svg>';
+    }
+    return id;
   };
 })();
