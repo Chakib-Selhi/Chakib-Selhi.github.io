@@ -185,19 +185,47 @@
     });
   }
 
-  // Icône d'un dépôt ajouté automatiquement : choix forcé dans data.js (github.icones), sinon déduite.
-  function guessIcon(r, main) {
+  // Icônes thématiques possibles d'un dépôt ajouté automatiquement, de la plus précise à la plus générale.
+  // Un choix forcé dans data.js (github.icones) passe avant tout.
+  function iconCandidates(r, main) {
     var icones = cfg.icones || {};
     var forced = Object.keys(icones).filter(function (k) { return k.toLowerCase() === r.name.toLowerCase(); })[0];
-    if (forced) return icones[forced];
+    if (forced) return { forced: icones[forced] };
     var t = r.topics || [];
-    var has = function (x) { return t.indexOf(x) !== -1; };
+    var has = function () { return [].some.call(arguments, function (x) { return t.indexOf(x) !== -1; }); };
     var text = (r.name + " " + r.description).toLowerCase();
-    if (has("relationalalgebra") || has("relational-algebra")) return "relalg";
-    if (has("calendar") || has("ics") || has("schedule") || /calendrier|calendar|horaire|schedule|agenda|\.ics\b/.test(text)) return "calendar";
-    if (has("ios") || has("watchos") || has("android") || has("swiftui") || main === "Swift" || main === "Kotlin") return "watch";
-    if (has("docker") || has("homelab") || has("self-hosted") || has("server") || has("networking") || main === "Shell" || main === "Dockerfile") return "server";
-    return "code";
+    var out = [];
+    if (has("relationalalgebra", "relational-algebra")) out.push("relalg");
+    if (has("calendar", "ics", "schedule") || /calendrier|calendar|horaire|schedule|agenda|\.ics\b/.test(text)) out.push("calendar");
+    if (has("network-monitoring", "network-security", "pcap", "arp", "mdns", "packet-capture")) out.push("radar");
+    if (has("ios", "watchos", "android", "swiftui") || main === "Swift" || main === "Kotlin") out.push("watch");
+    if (has("docker", "homelab", "self-hosted", "server", "networking") || main === "Shell" || main === "Dockerfile") out.push("server");
+    out.push("code");
+    return { list: out };
+  }
+
+  // Donne à chaque projet automatique une icône différente de celles déjà prises. Les dépôts sont
+  // traités du plus ancien au plus récent : un nouveau dépôt ne change pas l'icône des anciens.
+  function assignIcons(projets) {
+    var taken = {};
+    projets.forEach(function (p) { if (!p.auto && p.icone) taken[p.icone] = true; });
+    var auto = projets.filter(function (p) { return p.auto; })
+      .sort(function (a, b) { return String(a.gh.created).localeCompare(String(b.gh.created)) || a.nom.localeCompare(b.nom); });
+    auto.forEach(function (p) { if (p.iconCand.forced) taken[p.iconCand.forced] = true; });
+    var n = 0;
+    auto.forEach(function (p) {
+      var c = p.iconCand;
+      if (c.forced) p.icone = c.forced;
+      else {
+        p.icone = c.list.filter(function (i) { return !taken[i]; })[0];
+        while (!p.icone) {
+          var id = window.projectIcon ? window.projectIcon(n++) : "code";
+          if (!taken[id] || id === "code") p.icone = id;
+        }
+      }
+      taken[p.icone] = true;
+      delete p.iconCand;
+    });
   }
 
   function autoProject(r) {
@@ -218,7 +246,7 @@
       gh: r,
       nom: r.name,
       fichier: r.name + "/",
-      icone: guessIcon(r, main),
+      iconCand: iconCandidates(r, main),
       statut: r.archived ? "archive" : wip ? "en-cours" : "publie",
       annee: (r.created || "").slice(0, 4),
       type: main ? { fr: "Projet " + main, en: main + " project" } : { fr: "Dépôt GitHub", en: "GitHub repository" },
@@ -252,6 +280,7 @@
       .sort(function (a, b) { return String(b.pushed).localeCompare(String(a.pushed)); })
       .map(autoProject);
     D.projets = debut.concat(auto, fin);
+    assignIcons(D.projets);
     D.projets.forEach(function (p) { if (p.gh) applySkills(p); });
     // Retire des preuves les projets qui ne sont plus affichés.
     var ids = D.projets.map(function (p) { return p.id; });
