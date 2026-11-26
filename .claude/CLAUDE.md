@@ -20,7 +20,7 @@ Site : https://chakib-selhi.github.io (GitHub Pages, branche `main`).
 - Le dépôt du portfolio ne doit jamais apparaître sur le site.
 - Ne pas ajouter d'outils ou de compétences non confirmés par Chakib (ex. Wireshark, nmap, Kali Linux).
 - Tout texte existe en FR et en EN.
-- Chaque projet a une icône différente, dans le thème du projet. Pour un nouveau dépôt, dessiner une icône dans `js/icons.js` et l'imposer dans `github.icones` (data.js). Sinon, `assignIcons()` (github.js) choisit une icône thématique libre, puis une icône générique unique (`projectIcon(n)`).
+- Chaque projet a une icône différente, dans le thème du projet. **À chaque nouveau dépôt synchronisé, dessiner une icône sur mesure** qui représente le projet, dans le même style (pixel, contour `#111111` de 2 px, palette du site), l'ajouter à `js/icons.js` et l'imposer dans `github.icones` (data.js). Vérifier en début de session si un dépôt public n'a pas encore d'icône dans `github.icones`. Sinon, `assignIcons()` (github.js) choisit une icône thématique libre, puis une icône générique unique (`projectIcon(n)`).
 
 ### README
 Ne pas remettre les sections « Modifier le contenu », « Lancer en local » et « Publier ».
