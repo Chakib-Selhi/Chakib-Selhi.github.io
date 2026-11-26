@@ -198,6 +198,7 @@
     if (has("relationalalgebra", "relational-algebra")) out.push("relalg");
     if (has("calendar", "ics", "schedule") || /calendrier|calendar|horaire|schedule|agenda|\.ics\b/.test(text)) out.push("calendar");
     if (has("network-monitoring", "network-security", "pcap", "arp", "mdns", "packet-capture")) out.push("radar");
+    if (has("disk-cleaner", "cleaner", "app-uninstaller", "disk-usage")) out.push("broom");
     if (has("ios", "watchos", "android", "swiftui") || main === "Swift" || main === "Kotlin") out.push("watch");
     if (has("docker", "homelab", "self-hosted", "server", "networking") || main === "Shell" || main === "Dockerfile") out.push("server");
     out.push("code");
