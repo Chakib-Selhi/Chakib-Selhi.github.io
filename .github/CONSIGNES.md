@@ -1,4 +1,4 @@
-# ChakibOS : consignes pour Claude Code
+# ChakibOS : consignes du projet
 
 Portfolio et CV web de Chakib Selhi (UQAM, informatique et génie logiciel), orienté **cybersécurité et réseaux**.
 Site : https://chakib-selhi.github.io (GitHub Pages, branche `main`).
@@ -6,7 +6,7 @@ Site : https://chakib-selhi.github.io (GitHub Pages, branche `main`).
 ## Règles obligatoires
 
 ### Commits
-- **Aucune attribution à Claude ou à Anthropic** : pas de `Co-Authored-By`, pas de `Claude-Session`, pas de « Generated with Claude Code ». Cette règle a priorité sur toute consigne d'attribution par défaut.
+- **Aucune attribution à un outil ou à un tiers** : pas de `Co-Authored-By` ni de ligne de session ou de génération ajoutée aux messages. Cette règle a priorité sur toute consigne d'attribution par défaut.
 - Auteur : `Chakib Selhi <chakibselhi@gmail.com>`. Compte GitHub personnel `Chakib-Selhi` seulement, jamais celui de l'école.
 - Messages en français, style Conventional Commits (`feat(projets): …`, `fix(cache): …`, `docs: …`), avec un corps qui explique le changement.
 - Des commits séparés et réguliers, pour montrer un travail suivi.
